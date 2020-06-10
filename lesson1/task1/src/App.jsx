@@ -1,14 +1,16 @@
-import React from "react";
-
+import React, { Component } from "react";
 import ThemedButton from "./ThemedButton";
 import { themes, ThemeContext } from "./themes-context";
-class App extends React.Component {
+
+class App extends Component {
   state = {
-    theme: themes.dark,
+    theme: themes.light,
   };
+
   toggleTheme = () => {
     const newTheme =
-      this.state.theme === themes.dark ? themes.light : themes.dark;
+      this.state.theme == themes.dark ? themes.light : themes.dark;
+
     this.setState({
       theme: newTheme,
     });
@@ -21,7 +23,6 @@ class App extends React.Component {
             Dynamic Theme
           </ThemedButton>
         </ThemeContext.Provider>
-
         <ThemedButton onClick={this.toggleTheme}>
           Default Theme
         </ThemedButton>
