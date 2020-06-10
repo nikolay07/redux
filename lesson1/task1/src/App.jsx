@@ -5,7 +5,8 @@ import ThemedButton from "./ThemedButton";
 const App = () => {
   return (
     <div>
-      <ThemedButton />
+      <ThemedButton>Dynamic Theme</ThemedButton>
+      <ThemedButton>Default Theme</ThemedButton>
     </div>
   );
 };
