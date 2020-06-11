@@ -29,7 +29,7 @@ store.subscribe(() => {
     (acc, value) => acc + +value,
     0
   );
-  const historyString = state.history.join(" ");
+  const historyString = state.history.join("");
   resultElem.textContent =
     state.history.length === 0
       ? ""
