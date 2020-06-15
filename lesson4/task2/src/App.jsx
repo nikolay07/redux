@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-import Counter from "./counter/Counter";
+//import Counter from "./counter/Counter";
 import Users from "./users/Users";
 
 const App = () => {
@@ -12,6 +12,3 @@ const App = () => {
   );
 };
 export default App;
-// <Provider store={store.counter}>
-//   <Counter />
-// </Provider>

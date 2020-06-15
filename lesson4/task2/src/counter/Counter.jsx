@@ -19,7 +19,7 @@ const Counter = ({ counter, incr, decr, res }) => {
 };
 const mapState = (state) => {
   return {
-    counter: state,
+    counter: state.counter,
   };
 };
 

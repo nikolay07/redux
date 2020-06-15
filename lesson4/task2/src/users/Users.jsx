@@ -25,12 +25,12 @@ class Users extends React.Component {
           {users.map((user) => (
             <li className="users__list-item" key={user.id}>
               {user.name}
-              <buton
+              <button
                 className="users__delete-btn"
                 onClick={() => deleteUser(user.id)}
               >
                 +
-              </buton>
+              </button>
             </li>
           ))}
         </ul>
