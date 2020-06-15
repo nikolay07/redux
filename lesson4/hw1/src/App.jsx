@@ -1,14 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
+import UserList from "./users/UsersList";
 import { Provider } from "react-redux";
-import UsersList from "./users/UsersList";
 import store from "./store";
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <UsersList />
-    </Provider>
-  );
-};
-
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <UserList />
+      </Provider>
+    );
+  }
+}
 export default App;
