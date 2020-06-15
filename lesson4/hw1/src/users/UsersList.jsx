@@ -1,50 +1,42 @@
-import React, { Component } from "react";
-import Pagination from "./Pagination";
+import React from "react";
 import User from "./User";
+import Pagination from "./Pagination";
 import { connect } from "react-redux";
-import * as paginationActions from "./user.actions";
+import * as usersAction from "./users.actions";
 
-const UserList = ({
-  users,
-  goNext,
-  goPrev,
-  currentPage,
-  itemsPerPage,
-}) => {
-  const displayUsers = users.slice(
-    currentPage * itemsPerPage,
-    currentPage * itemsPerPage + 3
-  );
-  const userList = displayUsers.map((user) => (
-    <User key={user.id} {...user} />
-  ));
-  return (
-    <div>
-      <Pagination
-        goNext={goNext}
-        goPrev={goPrev}
-        totalItems={users.length}
-        currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
-      />
-      <ul className="users">{userList}</ul>
-    </div>
-  );
+const UsersList = ({ users, currentPage, goNext, goPrev }) => {
+    return (
+        <div>
+            <Pagination
+                goPrev={goPrev}
+                goNext={goNext}
+                currentPage={currentPage}
+                totalItems={users.length}
+            />
+            <ul className="users">
+                {users
+                    .slice(currentPage * 3, currentPage * 3 + 3)
+                    .map((user) => (
+                        <User key={user.id} name={user.name} age={user.age} />
+                    ))}
+            </ul>
+        </div>
+    );
 };
 
 const mapState = (state) => {
-  return {
-    users: state.usersList,
-    currentPage: state.currentPage,
-    itemsPerPage: state.itemsPerPage,
-  };
+    return {
+        users: state.usersList,
+        currentPage: state.currentPage,
+    };
 };
 
 const mapDispatch = {
-  goNext: paginationActions.goNext,
-  goPrev: paginationActions.goPrev,
+    goNext: usersAction.goNextPage,
+    goPrev: usersAction.goPrevPage,
 };
 
 const connector = connect(mapState, mapDispatch);
+const ConnectedUsers = connector(UsersList);
 
-export default connector(UserList);
+export default ConnectedUsers;

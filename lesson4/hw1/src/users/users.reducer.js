@@ -1,4 +1,4 @@
-import { GO_NEXT, GO_PREV } from "./user.actions";
+import { NEXT_PAGE, PREV_PAGE } from "./users.actions";
 
 const initialState = {
   usersList: [
@@ -43,25 +43,27 @@ const initialState = {
       name: "Semeb",
     },
   ],
+
   currentPage: 0,
-  itemsPerPage: 3,
 };
 
-export const paginationReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GO_NEXT: {
+    case NEXT_PAGE:
       return {
         ...state,
         currentPage: state.currentPage + 1,
       };
-    }
-    case GO_PREV: {
+
+    case PREV_PAGE:
       return {
         ...state,
         currentPage: state.currentPage - 1,
       };
-    }
+
     default:
       return state;
   }
 };
+
+export default usersReducer;
