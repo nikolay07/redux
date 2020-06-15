@@ -42,6 +42,16 @@ const initialState = {
       age: 39,
       name: "Semeb",
     },
+    {
+      id: "id-18",
+      age: 39,
+      name: "Semeq",
+    },
+    {
+      id: "id-19",
+      age: 39,
+      name: "Semen",
+    },
   ],
 
   currentPage: 0,
