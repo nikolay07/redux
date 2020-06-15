@@ -1,59 +1,64 @@
 import { NEXT_PAGE, PREV_PAGE } from "./users.actions";
+const users = [
+  {
+    id: "id-0",
+    age: 21,
+    name: "Bob",
+  },
+  {
+    id: "id-1",
+    age: 17,
+    name: "Tom",
+  },
+  {
+    id: "id-2",
+    age: 18,
+    name: "Tad",
+  },
+  {
+    id: "id-3",
+    age: 45,
+    name: "Justin",
+  },
+  {
+    id: "id-4",
+    age: 45,
+    name: "Franklin",
+  },
+  {
+    id: "id-5",
+    age: 45,
+    name: "John",
+  },
+  {
+    id: "id-6",
+    age: 45,
+    name: "Andrew",
+  },
+  {
+    id: "id-7",
+    age: 45,
+    name: "Pol",
+  },
+  {
+    id: "id-8",
+    age: 45,
+    name: "Ron",
+  },
+  {
+    id: "id-9",
+    age: 45,
+    name: "Harry",
+  },
+  {
+    id: "id-10",
+    age: 45,
+    name: "Anna",
+  },
+];
 
 const initialState = {
-  usersList: [
-    {
-      id: "id-01",
-      age: 33,
-      name: "Taras",
-    },
-    {
-      id: "id-11",
-      age: 19,
-      name: "Oleg",
-    },
-    {
-      id: "id-12",
-      age: 29,
-      name: "Rostik",
-    },
-    {
-      id: "id-13",
-      age: 25,
-      name: "Ivan",
-    },
-    {
-      id: "id-14",
-      age: 34,
-      name: "Nik",
-    },
-    {
-      id: "id-15",
-      age: 31,
-      name: "Vasil",
-    },
-    {
-      id: "id-16",
-      age: 25,
-      name: "Andrey",
-    },
-    {
-      id: "id-17",
-      age: 39,
-      name: "Semeb",
-    },
-    {
-      id: "id-18",
-      age: 39,
-      name: "Semeq",
-    },
-    {
-      id: "id-19",
-      age: 39,
-      name: "Semen",
-    },
-  ],
-
+  usersList: users,
   currentPage: 0,
 };
 
