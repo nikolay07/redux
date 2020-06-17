@@ -26,3 +26,4 @@ const mapDispatch = {
   setFilterText: usersActions.setFilterText,
 };
 export default connect(mapState, mapDispatch)(App);
+//export default App;

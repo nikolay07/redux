@@ -74,7 +74,7 @@ const usersReducer = (state = initialState, action) => {
     default:
       return state;
   }
-  // if (action.type === "abc") {
+  // if (action.type === SET_FILTER_TEXT) {
   //   return {
   //     ...state,
   //     filterText: action.payload.filterText,
