@@ -5,7 +5,7 @@ import User from "./User";
 import Filter from "./Filter";
 
 const UsersList = ({ usersList, filterText, setFilterText }) => {
-  const handleChange = (event) => {
+  const onChange = (event) => {
     setFilterText(event.target.value.toLowerCase());
   };
   const usersToDisplay = usersList.filter((user) =>
@@ -15,7 +15,7 @@ const UsersList = ({ usersList, filterText, setFilterText }) => {
     <div>
       <Filter
         count={usersToDisplay.length}
-        onChange={handleChange}
+        onChange={onChange}
         filterText={filterText}
       />
       <ul className="users">
@@ -29,8 +29,8 @@ const UsersList = ({ usersList, filterText, setFilterText }) => {
 
 const mapState = (state) => {
   return {
-    usersList: state.users.usersList,
     filterText: state.users.filterText,
+    usersList: state.users.usersList,
   };
 };
 const mapDispatch = {

@@ -59,8 +59,8 @@ const users = [
 ];
 
 const initialState = {
-  usersList: users,
   filterText: "",
+  usersList: users,
 };
 
 const usersReducer = (state = initialState, action) => {
