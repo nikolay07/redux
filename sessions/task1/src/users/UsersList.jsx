@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as usersActions from "./users.actions";
 import User from "./User";
-import Filter from "./Filter";
+import Filter from "../Filter";
 
 const UsersList = ({ usersList, filterText, setFilterText }) => {
   const onChange = (event) => {
