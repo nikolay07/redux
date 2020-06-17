@@ -22,7 +22,7 @@ const mapState = (state) => {
     filterText: state.users.filterText,
   };
 };
-const mapDispatch = () => {
-  setFilterText: usersActions.setFilterText;
+const mapDispatch = {
+  setFilterText: usersActions.setFilterText,
 };
 export default connect(mapState, mapDispatch)(App);

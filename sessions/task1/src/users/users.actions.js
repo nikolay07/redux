@@ -1,10 +1,10 @@
-export const FILTER_TEXT = "FILTERED_USERS/FILTERED_TEXT";
+export const SET_FILTER_TEXT = "SET_FILTER_TEXT";
 
-export const setFilterText = (text) => {
+export const setFilterText = (filterText) => {
   return {
-    type: FILTER_TEXT,
+    type: SET_FILTER_TEXT,
     payload: {
-      text,
+      filterText,
     },
   };
 };

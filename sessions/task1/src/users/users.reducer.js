@@ -1,4 +1,4 @@
-import { FILTER_TEXT } from "./users.actions";
+import { SET_FILTER_TEXT } from "./users.actions";
 
 const users = [
   {
@@ -64,17 +64,23 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-  return initialState;
-  //   switch (action.type) {
-  //     case FILTER_TEXT:
-  //       return {
-  //         ...state,
-  //         filterText: action.payload.text,
-  //       };
+  switch (action.type) {
+    case SET_FILTER_TEXT:
+      return {
+        ...state,
+        filterText: action.payload.filterText,
+      };
 
-  //     default:
-  //       return state;
-  //   }
+    default:
+      return state;
+  }
+  // if (action.type === "abc") {
+  //   return {
+  //     ...state,
+  //     filterText: action.payload.filterText,
+  //   };
+  // }
+  // return state;
 };
 
 export default usersReducer;
