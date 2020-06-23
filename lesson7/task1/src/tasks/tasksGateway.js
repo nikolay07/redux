@@ -13,13 +13,6 @@ export const createTask = (taskData) => {
   });
 };
 
-export const fetchTasksList = () =>
-  fetch(baseUrl).then((response) => {
-    if (response.ok) return response.json();
-
-    throw new Error("Failed to load tasks");
-  });
-
 export const updateTask = (taskId, taskData) => {
   return fetch(`${baseUrl}/${taskId}`, {
     method: "PUT",
@@ -40,4 +33,10 @@ export const deleteTask = (taskId) => {
     if (!response.ok) throw new Error("Failed to delete task");
   });
 };
-applicationCache;
+
+export const fetchTasksList = () =>
+  fetch(baseUrl).then((response) => {
+    if (response.ok) return response.json();
+
+    throw new Error("Failed to download tasks");
+  });
