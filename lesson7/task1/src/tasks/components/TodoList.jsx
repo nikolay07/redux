@@ -1,68 +1,45 @@
 import React, { Component } from "react";
-import TaskList from "./TaskList";
-import CreateTaskInput from "./CreateTaskInput";
-import { createTask, updateTask, deleteTask } from "../tasksGateway";
-
-import { taskListSelectors } from "../tasks.selectors";
-import * as tasksActions from "../tasks.actions";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import * as tasksActions from "../tasks.actions";
+import TasksList from "./TasksList";
+import { sortedTasksListSelector } from "../tasks.selectors";
 
 class TodoList extends Component {
   componentDidMount() {
     this.props.getTaskList();
   }
 
-  handleTaskStatusChange = (id) => {
-    const { tasks } = this.state;
-    const { done, text, createDate } = tasks.find(
-      (task) => task.id === id
-    );
-    const updatedTask = {
-      text,
-      createDate,
-      done: !done,
-    };
-    updateTask(id, updatedTask).then(this.props.getTaskList());
-  };
-
-  handleTaskCreate = (text) => {
-    createTask({
-      text,
-      done: false,
-      createDate: new Date().toISOString(),
-    }).then(() => this.fetchTask());
-  };
-
-  handleTaskDelete = (id) => {
-    deleteTask(id).then(() => this.fetchTask());
-  };
-
   render() {
-    console.log(this.props.state);
-    console.log(taskListSelectors);
     return (
       <>
         <h1 className="title">Todo List</h1>
-        <main className="todo-list">
-          <CreateTaskInput onCreate={this.handleTaskCreate} />
-          <TaskList
-            tasks={this.props.tasks}
-            onChange={this.handleTaskStatusChange}
-            onDelete={this.handleTaskDelete}
-          />
-        </main>
+        <TasksList
+          tasks={this.props.tasks}
+          onCreate={this.props.createTask}
+          onDelete={this.props.deleteTask}
+          onChange={this.props.updateTask}
+        />
       </>
     );
   }
 }
-
+TodoList.propTypes = {
+  tasks: PropTypes.arrayOf(PropTypes.shape()),
+  getTaskList: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  createTask: PropTypes.func.isRequired,
+};
+const mapDispatch = {
+  getTaskList: tasksActions.getTaskList,
+  updateTask: tasksActions.updateTask,
+  deleteTask: tasksActions.deleteTask,
+  createTask: tasksActions.createTask,
+};
 const mapState = (state) => {
   return {
-    tasks: [],
-    //tasks: taskListSelectors(state),
+    tasks: sortedTasksListSelector(state),
   };
 };
-
-const mapDispatch = { getTaskList: tasksActions.getTaskList };
-
 export default connect(mapState, mapDispatch)(TodoList);

@@ -1,21 +1,68 @@
-import { fetchTasksList } from "./tasksGateway";
+import * as tasksGateway from "./tasksGateway";
+import { tasksListSeletor } from "./tasks.selectors";
 
-export const TASKS_LIST_RECIEVED = "TASKS_LIST_RECIEVED";
-// синхронный action
-export const tasksListRecieved = (tasksList) => {
+export const TASKS_LIST_RECEIVED = "TASKS/TASKS_LIST_RECEIVED";
+
+export const tasksListReceived = (tasksList) => {
   const action = {
-    type: TASKS_LIST_RECIEVED,
-    payload: { tasksList },
+    type: TASKS_LIST_RECEIVED,
+    payload: {
+      tasksList,
+    },
   };
+
   return action;
 };
 
-// асинхронный action - Action Creator - возвращают асинхронный action ( функцию  - thunk)
 export const getTaskList = () => {
-  const thunkActions = function (dispatch) {
-    fetchTasksList().then((tasksList) =>
-      dispatch(tasksListRecieved(tasksList))
-    );
+  const thunkAction = function (dispatch) {
+    tasksGateway
+      .fetchTasksList()
+      .then((tasksList) => dispatch(tasksListReceived(tasksList)));
   };
-  return thunkActions;
+
+  return thunkAction;
+};
+
+export const updateTask = (taskId) => {
+  const thunkAction = function (dispatch, getState) {
+    const state = getState();
+    const tasksList = tasksListSeletor(state);
+    const taskItem = tasksList.find((task) => task.id === taskId);
+    const updatedTask = {
+      ...taskItem,
+      done: !taskItem.done,
+    };
+
+    tasksGateway
+      .updateTask(taskId, updatedTask)
+      .then(() => dispatch(getTaskList()));
+  };
+
+  return thunkAction;
+};
+
+export const deleteTask = (taskId) => {
+  const thunkAction = function (dispatch) {
+    tasksGateway
+      .deleteTask(taskId)
+      .then(() => dispatch(getTaskList()));
+  };
+
+  return thunkAction;
+};
+
+export const createTask = (text) => {
+  const thunkAction = function (dispatch) {
+    const newTask = {
+      text,
+      done: false,
+      createdAt: new Date().toISOString(),
+    };
+    tasksGateway
+      .createTask(newTask)
+      .then(() => dispatch(getTaskList()));
+  };
+
+  return thunkAction;
 };
