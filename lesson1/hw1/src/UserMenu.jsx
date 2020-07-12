@@ -6,11 +6,11 @@ class UserMenu extends Component {
     return (
       <div className="menu" {...this.props}>
         <span className="menu__greeting">
-          Hello, {this.context.name}
+          Hello, {this.context.userData.name}
         </span>
         <img
           alt="User Avatar"
-          src={`${this.context.avatar_url}`}
+          src={`${this.context.userData.avatar_url}`}
           className="menu__avatar"
         />
       </div>
