@@ -2,41 +2,36 @@ import React from "react";
 import User from "./User";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
-import * as usersAction from "./users.actions";
+import { goNextPage, goPrevPage } from "./users.actions";
 
-const UsersList = ({ users, currentPage, goNext, goPrev }) => {
-    return (
-        <div>
-            <Pagination
-                goPrev={goPrev}
-                goNext={goNext}
-                currentPage={currentPage}
-                totalItems={users.length}
-            />
-            <ul className="users">
-                {users
-                    .slice(currentPage * 3, currentPage * 3 + 3)
-                    .map((user) => (
-                        <User key={user.id} name={user.name} age={user.age} />
-                    ))}
-            </ul>
-        </div>
-    );
+const UsersList = ({ usersList, currentPage, goNextPage, goPrevPage }) => {
+  return (
+    <div>
+      <Pagination
+        goPrevPage={goPrevPage}
+        goNextPage={goNextPage}
+        currentPage={currentPage}
+        usersListLength={usersList.length}
+      />
+      <ul className="users">
+        {usersList.slice(currentPage * 3, currentPage * 3 + 4).map((user) => (
+          <User key={user.id} name={user.name} age={user.age} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-const mapState = (state) => {
-    return {
-        users: state.usersList,
-        currentPage: state.currentPage,
-    };
+const mapState = ({ usersList, currentPage }) => {
+  return {
+    usersList,
+    currentPage,
+  };
 };
 
 const mapDispatch = {
-    goNext: usersAction.goNextPage,
-    goPrev: usersAction.goPrevPage,
+  goNextPage,
+  goPrevPage,
 };
 
-const connector = connect(mapState, mapDispatch);
-const ConnectedUsers = connector(UsersList);
-
-export default ConnectedUsers;
+export default connect(mapState, mapDispatch)(UsersList);
