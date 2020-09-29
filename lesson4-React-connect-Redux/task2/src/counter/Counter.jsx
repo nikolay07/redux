@@ -18,11 +18,8 @@ const Counter = ({ counter, incr, decr, res }) => {
   );
 };
 // создаем state, который называется  counter равен state.counter из state редьюсера
-const mapState = (state) => {
-  return {
-    counter: state.counter,
-  };
-};
+const mapState = (state) => { return { counter: state.counter } }
+
 //cоздаем методы для работы равны action.creators в action
 const mapDispatch = {
   incr: counterActions.increment, //тоже самое incr: store.dispatch(increment())
