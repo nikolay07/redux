@@ -2,10 +2,11 @@ import { SET_USER, REMOVE_USER } from "./user.actions";
 
 export const userReducer = (state = null, action) => {
   switch (action.type) {
+    //добавить пользователя
     case SET_USER: {
       return action.payload.userData;
     }
-
+    //удалить пользователя
     case REMOVE_USER: {
       return null;
     }
