@@ -1,18 +1,19 @@
-import { ADD_USER, DELETE_USER, UPDATE_USER } from "./users.actions";
+import { ADD_USER, DELETE_USER, UPDATE_USER } from "./users.actions"; // импортируем Аction.type пользователей
 
-const initialState = {
-  usersList: [],
-};
+// начальное состояние Reducer
+const initialState = { usersList: [], };
 
+// описываем что может делать Reducer
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
+    // добавить пользователя
     case ADD_USER: {
       return {
         ...state,
         usersList: state.usersList.concat(action.payload.userData),
       };
     }
-
+    // удалить пользователя
     case DELETE_USER: {
       const newList = state.usersList.filter(
         (user) => user.id !== action.payload.userId
@@ -22,6 +23,7 @@ export const usersReducer = (state = initialState, action) => {
         usersList: newList,
       };
     }
+    // обновить данные пользователя
     case UPDATE_USER: {
       const newList = state.usersList.map((user) => {
         if (user.id === action.payload.userId) {
