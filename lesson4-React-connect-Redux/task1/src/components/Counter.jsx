@@ -35,5 +35,5 @@ const mapDispatch = {
   res: counterActions.reset,
 };
 
-const connector = connect(mapState, mapDispatch); // HOC High Order Component
-export default connector(Counter); // экспортируем обернутый реакт компонент
+//const connector = connect(mapState, mapDispatch); // HOC High Order Component
+export default connect(mapState, mapDispatch)(Counter); // экспортируем обернутый реакт компонент
