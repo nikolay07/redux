@@ -21,6 +21,4 @@
 * подключаем actions - **import {increment, decrement, reset} from "./users.actions"**
 * подключаем store.dispatch()-
 * **const mapDispatch = {incr: increment, decr: decrement, res: reset}**
-* экспортируем обернутый реакт компонент **export connect(mapState, mapDispatch)(Counter);**
-
-
+* экспортируем обернутый реакт компонент **export connect(mapState, mapDispatch)(Counter)**

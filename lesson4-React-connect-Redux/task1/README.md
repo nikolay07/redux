@@ -7,7 +7,4 @@
 * подключаемcя к state из reducer **const mapState = (state) => {return {counter: state}}**
 * подключаем actions - **import { increment, decrement, reset } from "../counter.actions"**
 * подключаем store.dispatch() **const mapDispatch = { incr: increment,  decr: decrement,  res: reset}**
-* экспортируем обернутый компонент Counter - **export connect(mapState, mapDispatch)(Counter);**
-
-
-
+* экспортируем обернутый компонент Counter - **export connect(mapState, mapDispatch)(Counter)**
