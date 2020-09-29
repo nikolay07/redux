@@ -1,5 +1,5 @@
 1.Изменение цвета обеих кнопок при нажатии на одну
 2.Реализовано с помощью Context
 
-![alt text](img/1.png)
-![alt text](img/2.png)
+![alt text](img/1.PNG)
+![alt text](img/2.PNG)
