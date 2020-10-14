@@ -1,3 +1,5 @@
-**Redux Store middleware**
+**Weather app - React + Redux**
 
-* подключение к Redux Store logger middleware и вывод в консоль все actions, отправленные в redux store
+* приложение, отображает температуру в разных городах
+
+![alt text](img/1.png)
